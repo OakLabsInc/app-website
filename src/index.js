@@ -9,9 +9,9 @@ function loadWindow () {
     } else {
       oak.load({
         url: process.env.REMOTE_URL || 'https://zivelo.com/',
-        size: '1080x1920',
-        background: '#ffffff',
-        ontop: false,
+        size: process.env.WINDOW_SIZE || '1080x1920',
+        background: process.env.BACKGROUND_COLOR || '#ffffff',
+        ontop: process.env.WINDOW_ONTOP='true'?true:false || true,
         sslExceptions: ['localhost']
       })
     }

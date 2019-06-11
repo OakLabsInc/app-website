@@ -1,6 +1,6 @@
 {
   "name": "app-website",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "App for just a simple website in OakOS",
   "main": "src/index.js",
   "engines": {
@@ -10,14 +10,13 @@
     "standard": "~12.0.1"
   },
   "devDependencies": {
-    "oak": "~5.0.0-rc0"
+    "oak": "~5.0.9"
   },
   "scripts": {
-    "start": "node_modules/.bin/oak src/index.js",
-    "rebuild": "/bin/bash -c 'node_modules/.bin/oak-rebuild'",
-    "dev": "export $(cat .env | xargs) && npm start",
-    "test-standard": "node_modules/.bin/standard",
-    "clean-install": "rm -rf node_modules package-lock.json && npm i && npm run rebuild"
+    "start": "node_modules/.bin/oak .",
+    "dev": "env $(cat .env | grep -v '#' | xargs) npm start",
+    "rebuild": "rm -rf node_modules/ package-lock.json && npm i && node_modules/.bin/oak-rebuild $(pwd)",
+    "test": "exit 0;"
   },
   "repository": {
     "type": "git",
