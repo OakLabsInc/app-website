@@ -1,5 +1,5 @@
 const oak = require('oak')
-
+const waitOn = require('wait-on');
 let dns = require('dns')
 
 function loadWindow () {
@@ -20,5 +20,13 @@ function loadWindow () {
 
 // everything has to wait for the main ready event to fire
 oak.on('ready', () => {
-  loadWindow()
+  var opts = {
+    resources: [process.env.REMOTE_URL]
+  }
+  waitOn(opts, function (err) {
+    if (err) { return handleError(err); }
+    // once here, all resources are available
+    loadWindow()
+  });
+  
 })
