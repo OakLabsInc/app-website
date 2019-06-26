@@ -8,7 +8,7 @@ function loadWindow () {
       loadWindow()
     } else {
       let exceptions = process.env.SSL_EXCEPTIONS.split(';') || ['localhost']
-      console.log("sslExceptions: ",exceptions)
+   
       oak.load({
         url: process.env.REMOTE_URL || 'https://zivelo.com/',
         size: process.env.WINDOW_SIZE || '1080x1920',
