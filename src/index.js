@@ -12,7 +12,7 @@ function loadWindow () {
         size: process.env.WINDOW_SIZE || '1080x1920',
         background: process.env.BACKGROUND_COLOR || '#ffffff',
         ontop: process.env.WINDOW_ONTOP='true'?true:false || true,
-        sslExceptions: ['localhost']
+        sslExceptions:  JSON.parse(process.env.SSL_EXCEPTIONS) || ['localhost']
       })
     }
   })
