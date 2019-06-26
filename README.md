@@ -38,16 +38,16 @@ WINDOW_ONTOP="false"
 
 ``` json
 {
-  "services": [
-    {
-      "image": "index.docker.io/oaklabs/app-website:1.0.2",
+      "image": "index.docker.io/oaklabs/app-website:release-1.0.5",
       "username": "{{dockerUsername}}",
       "password": "{{dockerPassword}}",
       "environment": {
-        "REMOTE_URL": "https://oak-signage.firebaseapp.com/preview.html?apikey=K6z0KH8UeYgSgeRVuVWlnzFBfD32&galleryname=coffee_shop",
-        "NODE_ENV": "production"
+        "REMOTE_URL": "http://someurlontheweb.com",
+        "BACKGROUND_COLOR": "#000000",
+        "WINDOW_SIZE": "1920x1080",
+        "WINDOW_ONTOP": "true",
+        "SSL_EXCEPTIONS": "localhost;*.zivelo.com",
+        "INSECURE": "false"
       }
     }
-  ]
-}
 ```
