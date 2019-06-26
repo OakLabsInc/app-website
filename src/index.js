@@ -7,7 +7,10 @@ function loadWindow () {
     if (err !== null) {
       loadWindow()
     } else {
-      let exceptions = process.env.SSL_EXCEPTIONS.split(';') || ['localhost']
+      let exceptions = ['localhost']
+      if (process.env.SSL_EXCEPTIONS) {
+        exceptions = process.env.SSL_EXCEPTIONS.split(';')
+      }
    
       oak.load({
         url: process.env.REMOTE_URL || 'https://zivelo.com/',
