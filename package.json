@@ -1,6 +1,6 @@
 {
   "name": "app-website",
-  "version": "1.0.2",
+  "version": "1.0.6",
   "description": "App for just a simple website in OakOS",
   "main": "src/index.js",
   "engines": {
@@ -11,11 +11,12 @@
     "wait-on": "^3.2.0"
   },
   "devDependencies": {
+    "dotenv": "~8.0.0",
     "oak": "~5.0.9"
   },
   "scripts": {
     "start": "node_modules/.bin/oak .",
-    "dev": "env $(cat .env | grep -v '#' | xargs) npm start",
+    "dev": "npm start",
     "rebuild": "rm -rf node_modules/ package-lock.json && npm i && node_modules/.bin/oak-rebuild $(pwd)",
     "test": "exit 0;"
   },
@@ -23,7 +24,7 @@
     "type": "git",
     "url": "git+https://github.com/oaklabsinc/app-website.git"
   },
-  "author": "",
+  "author": "richard@joffray.com",
   "license": "UNLICENSED",
   "bugs": {
     "url": "https://github.com/oaklabsinc/app-website/issues"

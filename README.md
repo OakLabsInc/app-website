@@ -38,16 +38,34 @@ WINDOW_ONTOP="false"
 
 ``` json
 {
-      "image": "index.docker.io/oaklabs/app-website:release-1.0.5",
+  "services": [
+    {
+      "image": "index.docker.io/oaklabs/app-website:1.0.9",
       "username": "{{dockerUsername}}",
       "password": "{{dockerPassword}}",
       "environment": {
-        "REMOTE_URL": "http://someurlontheweb.com",
-        "BACKGROUND_COLOR": "#000000",
-        "WINDOW_SIZE": "1920x1080",
-        "WINDOW_ONTOP": "true",
-        "SSL_EXCEPTIONS": "localhost;*.zivelo.com",
-        "INSECURE": "false"
+        "REMOTE_URL": "https://oak-signage.firebaseapp.com/preview.html?apikey=K6z0KH8UeYgSgeRVuVWlnzFBfD32&galleryname=coffee_shop",
+        "NODE_ENV": "production"
       }
     }
+  ]
+}
 ```
+
+### Development Environment
+
+In order to test this locally you will need to create a `.env` file in the root of the project. Put the following example in it and run the project with `nmp run dev`
+
+```
+REMOTE_URL="https://zivelo.com"
+BACKGROUND_COLOR="#000000"
+WINDOW_SIZE="1920x1080"
+WINDOW_ONTOP="0"
+SSL_EXCEPTIONS="localhost;*.google.com"
+INSECURE="1"
+WAIT_ON="https://www.fast.com;https://www.google.com"
+```
+
+The `WAIT_ON` variable tells the app to wait for those assets to be available before starting the electron window. The rest are explained in the `oak` documentation. [https://github.com/OakLabsInc/oak](https://github.com/OakLabsInc/oak)
+
+Note that `REMOTE_URL` is the only required environmental variable.
