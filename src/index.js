@@ -24,8 +24,11 @@ function loadWindow () {
 
 // everything has to wait for the main ready event to fire
 oak.on('ready', () => {
-  let waitFor = process.env.WAIT_ON.split(";");
-  console.log(waitFor)
+  let waitFor = [process.env.REMOTE_URL];
+  if (process.env.WAIT_ON) {
+    waitFor = process.env.WAIT_ON.split(";")
+  }
+  console.log("waitFor: ", waitFor)
   let opts = {
     resources: waitFor
   }
