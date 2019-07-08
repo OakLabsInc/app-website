@@ -14,24 +14,13 @@ nvm use $(cat .nvmrc)
 npm install
 
 # rebuilds native modules for oak
-./node_modules/.bin/oak-rebuild .
+npm run rebuild
 ```
 
-## Running
+## Running for development
 
 ``` bash
-npm start
-```
-
-## Passing Environmental Variables
-
-example in the `.env` file
-
-``` text
-REMOTE_URL="https://www.google.com"
-BACKGROUND_COLOR="#000000"
-WINDOW_SIZE="1920x1080"
-WINDOW_ONTOP="false"
+npm run dev
 ```
 
 ### Passing to the install
@@ -50,6 +39,10 @@ WINDOW_ONTOP="false"
     }
   ]
 }
+```
+
+``` text
+Note that both of the above environmental variables are necessary.
 ```
 
 ### Development Environment
