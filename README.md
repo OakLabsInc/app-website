@@ -2,6 +2,8 @@
 
 App for displaying a simple website
 
+> Sample. Not to be used for production deployments
+
 ## Install
 
 Please use [`nvm`](https://github.com/creationix/nvm#install-script) to install node.
