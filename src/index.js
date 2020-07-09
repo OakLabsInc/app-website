@@ -12,7 +12,7 @@ function loadWindow () {
       let exceptions = ['localhost']
 
       let opts = {
-        url: process.env.URL || 'https://zivelo.com/',
+        url: process.env.REMOTE_URL || 'https://zivelo.com/',
         background: process.env.COLOR || '#ffffff',
         display: parseInt(process.env.DISPLAY) || 0 ,
         ontop: Boolean(process.env.ONTOP) || false,
@@ -39,7 +39,7 @@ function loadWindow () {
 
 // everything has to wait for the main ready event to fire
 oak.on('ready', async () => {
-  let waitFor = [process.env.URL];
+  let waitFor = [process.env.REMOTE_URL];
   if (process.env.WAIT_ON) {
     waitFor = process.env.WAIT_ON.split(";")
   }
