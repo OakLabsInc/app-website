@@ -31,7 +31,7 @@ npm run dev
 {
   "services": [
     {
-      "image": "index.docker.io/oaklabs/app-website:1.0.9",
+      "image": "index.docker.io/oaklabs/app-website:latest",
       "username": "{{dockerUsername}}",
       "password": "{{dockerPassword}}",
       "environment": {
