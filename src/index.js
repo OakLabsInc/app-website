@@ -38,7 +38,7 @@ function loadWindow () {
 }
 
 // everything has to wait for the main ready event to fire
-oak.on('ready', () => {
+oak.on('ready', async () => {
   let waitFor = [process.env.URL];
   if (process.env.WAIT_ON) {
     waitFor = process.env.WAIT_ON.split(";")
@@ -47,10 +47,19 @@ oak.on('ready', () => {
   let opts = {
     resources: waitFor
   }
-  waitOn(opts, function (err) {
-    if (err) { return handleError(err); }
+
+  
+  // Usage with async await
+  try {
+    await waitOn(opts);
     // once here, all resources are available
     loadWindow()
-  });
-  
+  } catch (err) {
+    handleError(err);
+  }
+    
 })
+
+function handleError(err) {
+  console.log('Error: ', err)
+}
