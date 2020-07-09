@@ -9,31 +9,54 @@ console.log("Versions: ",JSON.stringify(process.versions, null, 2))
 
 function loadWindow () {
   
-      let exceptions = ['localhost']
+  let exceptions = ['localhost']
+  let displays = oak.getDisplays()
+  let display = parseInt(process.env.DISPLAY_ID) || 0
+  let fullscreen = Boolean(process.env.FULLSCREEN) || false
+  let url = process.env.REMOTE_URL || 'https://zivelo.com/'
+  let width = displays[display].workArea.width
+  let height = displays[display].workArea.height
+  let percent = process.env.WINDOW_PERCENT || 1
+  let size = (width * percent)  + "x" + height
+  let x = width -  (width * percent)
+  if( process.env.WINDOW_X ) {
+    x = parseInt(process.env.WINDOW_X)
+  }
+  let y = displays[display].workArea.y
+  if( process.env.WINDOW_Y ) {
+    y = parseInt(process.env.WINDOW_Y)
+  }
+  let background = process.env.BACKGROUND_COLOR || '#ffffff'
+  let ontop = Boolean(process.env.WINDOW_ONTOP) || false
+  let insecure = Boolean(process.env.WINDOW_INSECURE)  || false
 
-      let opts = {
-        url: process.env.REMOTE_URL || 'https://zivelo.com/',
-        background: process.env.COLOR || '#ffffff',
-        display: parseInt(process.env.DISPLAY) || 0 ,
-        ontop: Boolean(process.env.ONTOP) || false,
-        size: process.env.SIZE || "1920x1080",
-        sslExceptions:  exceptions,
-        insecure: Boolean(process.env.INSECURE)  || false,
-        kiosk: Boolean(process.env.KIOSK) || false,
-        fullscreen: Boolean(process.env.FULLSCREEN) || true
-      }
-      if (opts.fullscreen) {
-        delete opts.size
-      }
 
-      // let opts = process.env
-      if (process.env.SSL_EXCEPTIONS) {
-        opts.sslExceptions = process.env.SSL_EXCEPTIONS.split(';')
-      }
+  console.log("Displays: ",JSON.stringify(displays))
 
-      console.log("Options: ", opts)
+  let opts = {
+    url,
+    background,
+    display,
+    ontop,
+    size: size,
+    x: x,
+    y: y,
+    sslExceptions:  exceptions,
+    insecure,
+    fullscreen
+  }
+  if (opts.fullscreen) {
+    delete opts.size
+  }
 
-      window = oak.load(opts)
+  // let opts = process.env
+  if (process.env.SSL_EXCEPTIONS) {
+    opts.sslExceptions = process.env.SSL_EXCEPTIONS.split(';')
+  }
+
+  console.log("Options: ", opts)
+
+  oak.load(opts)
 
 }
 
