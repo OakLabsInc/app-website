@@ -20,7 +20,7 @@ function loadWindow () {
         sslExceptions:  exceptions,
         insecure: Boolean(process.env.INSECURE)  || false,
         kiosk: Boolean(process.env.KIOSK) || false,
-        fullscreen: Boolean(process.env.FULLSCREEN) || false
+        fullscreen: Boolean(process.env.FULLSCREEN) || true
       }
       if (opts.fullscreen) {
         delete opts.size
