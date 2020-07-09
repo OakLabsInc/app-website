@@ -1,4 +1,5 @@
 const oak = require('oak')
+const { join } = require('path')
 const waitOn = require('wait-on');
 let dns = require('dns')
 let window = null
@@ -27,11 +28,15 @@ function loadWindow () {
     y = parseInt(process.env.WINDOW_Y)
   }
   let background = process.env.BACKGROUND_COLOR || '#ffffff'
-  let ontop = Boolean(process.env.WINDOW_ONTOP) || false
+  let ontop = process.env.WINDOW_ONTOP || false
   let insecure = Boolean(process.env.WINDOW_INSECURE)  || false
 
 
   console.log("Displays: ",JSON.stringify(displays))
+
+  let scripts = [
+    join(__dirname, 'remove-scrollbars.js'),
+  ]
 
   let opts = {
     url,
@@ -52,6 +57,10 @@ function loadWindow () {
   // let opts = process.env
   if (process.env.SSL_EXCEPTIONS) {
     opts.sslExceptions = process.env.SSL_EXCEPTIONS.split(';')
+  }
+
+  if (process.env.REMOVE_SCROLLBARS) {
+    opts.scripts = scripts
   }
 
   console.log("Options: ", opts)
