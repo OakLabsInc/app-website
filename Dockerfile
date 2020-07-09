@@ -1,4 +1,4 @@
-FROM oaklabs/oak:5.0.9
+FROM oaklabs/oak:6.0.1
 
 WORKDIR /app
 COPY . /app
@@ -11,4 +11,3 @@ CMD ["/app/src/index.js"]
 ENV NODE_ENV=production \
     REMOTE_URL=https://www.zivelo.com
 
-EXPOSE 9999
