@@ -14,7 +14,7 @@ function loadWindow () {
   let displays = oak.getDisplays()
   let display = parseInt(process.env.DISPLAY_ID) || 0
   let fullscreen = Boolean(process.env.FULLSCREEN) || false
-  let url = process.env.REMOTE_URL || 'https://zivelo.com/'
+  let url = process.env.REMOTE_URL || 'http://static.oak.host/signage/index.html'
   let width = displays[display].workArea.width
   let height = displays[display].workArea.height
   let percent = process.env.WINDOW_PERCENT || 1

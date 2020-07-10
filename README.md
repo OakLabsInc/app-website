@@ -35,16 +35,12 @@ npm run dev
       "username": "{{dockerUsername}}",
       "password": "{{dockerPassword}}",
       "environment": {
-        "REMOTE_URL": "https://oak-signage.firebaseapp.com/preview.html?apikey=K6z0KH8UeYgSgeRVuVWlnzFBfD32&galleryname=coffee_shop",
+        "REMOTE_URL": "http://static.oak.host/signage/index.html",
         "NODE_ENV": "production"
       }
     }
   ]
 }
-```
-
-``` text
-Note that both of the above environmental variables are necessary.
 ```
 
 ### Development Environment
@@ -86,5 +82,3 @@ WAIT_ON="https://www.fast.com;https://www.google.com"
 `SSL_EXCEPTIONS` (default: localhost) Bypass SSL security for specific hosts. This uses a host pattern. Example: `"*.mysite.com"` These should be delimited by semi-colons. `"localhost;*.google.com"`
 
 The rest are explained in the `oak` documentation. [https://github.com/OakLabsInc/oak#oakloadoptions-callback](https://github.com/OakLabsInc/oak#oakloadoptions-callback)
-
-Note that `REMOTE_URL` is the only required environmental variable.
