@@ -81,4 +81,6 @@ WAIT_ON="https://www.fast.com;https://www.google.com"
 
 `SSL_EXCEPTIONS` (default: localhost) Bypass SSL security for specific hosts. This uses a host pattern. Example: `"*.mysite.com"` These should be delimited by semi-colons. `"localhost;*.google.com"`
 
+`REMOVE_SCROLLBARS` (default: null) Set to "1" to inject the css to remove the scrollbars from Electron window
+
 The rest are explained in the `oak` documentation. [https://github.com/OakLabsInc/oak#oakloadoptions-callback](https://github.com/OakLabsInc/oak#oakloadoptions-callback)

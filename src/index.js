@@ -13,7 +13,7 @@ function loadWindow () {
   let exceptions = ['localhost']
   let displays = oak.getDisplays()
   let display = parseInt(process.env.DISPLAY_ID) || 0
-  let fullscreen = Boolean(process.env.FULLSCREEN) || false
+  let fullscreen = Boolean(parseInt(process.env.FULLSCREEN)) || false
   let url = process.env.REMOTE_URL || 'http://static.oak.host/signage/index.html'
   let width = displays[display].workArea.width
   let height = displays[display].workArea.height
@@ -32,7 +32,7 @@ function loadWindow () {
   let insecure = Boolean(process.env.WINDOW_INSECURE)  || false
 
 
-  console.log("Displays: ",JSON.stringify(displays))
+  console.log("Displays: ",JSON.stringify(displays, null, 2))
 
   let scripts = [
     join(__dirname, 'remove-scrollbars.js'),
@@ -59,7 +59,9 @@ function loadWindow () {
     opts.sslExceptions = process.env.SSL_EXCEPTIONS.split(';')
   }
 
-  if (process.env.REMOVE_SCROLLBARS) {
+
+  console.log('REMOVE_SCROLLBARS', Boolean(parseInt(process.env.REMOVE_SCROLLBARS)))
+  if (Boolean(parseInt(process.env.REMOVE_SCROLLBARS))) {
     opts.scripts = scripts
   }
 
