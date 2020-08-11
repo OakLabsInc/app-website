@@ -1,6 +1,6 @@
 {
   "name": "app-website",
-  "version": "1.0.8",
+  "version": "3.0.0",
   "description": "App for just a simple website in OakOS",
   "main": "src/index.js",
   "engines": {
@@ -8,11 +8,11 @@
   },
   "dependencies": {
     "standard": "~14.3.1",
-    "wait-on": "~5.0.3",
-    "dotenv": "~8.1.0"
+    "wait-on": "~5.2.0",
+    "dotenv": "~8.2.0"
   },
   "devDependencies": {
-    "oak": "~6.0.1"
+    "oak": "~7.0.0"
   },
   "scripts": {
     "start": "node_modules/.bin/oak .",
