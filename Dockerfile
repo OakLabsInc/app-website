@@ -9,5 +9,5 @@ RUN npm i --engine-strict=true --progress=false --loglevel="error" \
 CMD ["/app/src/index.js"]
 
 ENV NODE_ENV=production \
-    REMOTE_URL=https://www.zivelo.com
+    REMOTE_URL=https://www.google.com
 
